@@ -1,0 +1,19 @@
+#The numeric value of a first name
+
+#Defining a math function for python
+def main():
+    print("This program computes the 'numeric value' of a name")
+    print()
+    
+#input commands to retrieve  full name to later compute numeric value, starting at zero for a and adding +1 per order
+#of alphabet, order using strings.
+    name = input("Hi there human, please enter your first name: ")
+    total = 0
+    
+    #loop and math import of string order function to return a unicode value to the string length in lower case letters
+    for letter in name:
+        total = total + ord(letter.lower()) - ord('a') + 1
+
+    print("The value is:", total)
+
+main()
