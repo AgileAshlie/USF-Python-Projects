@@ -1,0 +1,31 @@
+#Chatbot by Ashlie Stevens
+
+print("Hello. I am the moderator and elephant in this room. Actually, I'm a very wise chatbot who never sleeps.")
+print("I like talking with humans and I really like to read about you and technology.")
+name = input("What is your name?: ")
+print("Hello", name, ", Nice to meet you.")
+print("You've come to the right place to seek professional and technical writing services.")
+print("Ashlie is experienced and talented at creating user-centered documentation based on your requirements.")
+
+#Get contact information
+
+question = "What kind of writing services are you seeking?: "
+howoften = input(question)
+print("Interesting. Please tell me more so I can relay this information to the writer, Ashlie.")
+
+question = "How soon will you need this completed writing project?: "
+howoften = input(question)
+print("I'd be delighted to give Ashlie your contact information so she can call or email you back.")
+question = "What is the best way to reach you, phone or email?: "
+howoften = input(question)
+
+name = input("What is your email and or telephone #?: ")
+
+print("I'll rush this data through the wire so you can get a response within 24 hours.")
+question = "How did you find or hear about us?: "
+how = input(question)
+print("Thanks for letting us know, we want to thank our referrals.")
+
+print("Please explore the site, writing samples, and feel free to contact Ashlie directly through LinkedIn.")
+print("She's not a fan of unsolicited email, since 90% of phishing attacks occur through email.")
+print("Thank you for visiting the site and chatting with me today.")
