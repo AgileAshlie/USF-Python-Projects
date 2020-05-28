@@ -1,0 +1,62 @@
+#COP2030 Assignment 6
+#Ashlie Stevens
+
+#User can run from program/script
+def get_input_from_user():
+    # read user input until they enter a blank line and append it to lines
+    lines = []
+    while True:
+        line = input()
+        if line:
+            lines.append(line)
+        else:
+            break
+    return lines
+
+#User can get info from a file
+def get_input_from_file():
+    f = open("trip.txt", "r")
+    lines = []
+    while True:
+        line = f.readline()
+        if line:
+            lines.append(line)
+        else:
+            break
+
+    f.close()
+    return lines
+
+
+def get_mileage_and_gallons (leg):
+    values = leg.split()
+    miles = int(values[0])
+    gallons = int(values[1])
+
+    return miles, gallons
+
+
+def calculate_mileage (miles, gallons):
+    return miles / gallons
+
+
+def main():
+    print ('Enter the starting odometer reading on the next line')
+    last_odometer = int(input())
+
+    print('Enter legs of trip on each line with ending odometer reading for leg and gallons used separated by a space')
+    legs = get_input_from_user()
+
+    leg_counter = 0
+
+    for leg in legs:
+        miles, gallons = get_mileage_and_gallons(leg)
+        miles_traveled_in_leg = miles - last_odometer
+        mileage = calculate_mileage(miles_traveled_in_leg, gallons)
+        last_odometer = miles
+        leg_counter += 1
+
+        print ('Leg ' + str(leg_counter) + ' Mileage:' + str(mileage) + ' Miles Per Gallon')
+
+
+main()
