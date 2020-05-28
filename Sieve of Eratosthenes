@@ -1,0 +1,46 @@
+#COP2030
+
+
+
+import math
+
+
+# Sieve of Eratosthenes - Print the prime numbers between 1 and the number entered by the user
+# first prompt the user for the input and then build a list of possible primes
+# running through each number and removing multiples of that number
+def main():
+
+    # get the high number from the user
+    print("List all of the prime numbers between 1 and a number... please enter the number")
+    highest_number = int(input())
+
+    # create a list of possible primes using all of the numbers between 2 and the highest number
+    prime_list = []
+    for i in range(2, highest_number):
+        prime_list.append(i)
+
+    # walk through each number between 2 and the highest number to remove multiples of that number from the list
+    current = 2
+    while current <= highest_number:
+
+        # check to see if the current number is still in the prime list, if it has already been removed then skip it
+        if current in prime_list:
+
+            # go through each multiple of the current number and remove it from the list using range to
+            # control the iteration start from current * 2 for the first multiple, going up to the
+            # highest number using the current number as the amount to step up through all the multiples
+            for multiple in range(current * 2, highest_number, current):
+
+                # if the current multiple being stepped through is still in the prime list, remove it
+                if multiple in prime_list:
+                    prime_list.remove(multiple)
+
+        # move to the next number and set it to current
+        current = current + 1
+
+    # print the remaining list of numbers which should all be prime
+    print(prime_list)
+
+
+main()
+
