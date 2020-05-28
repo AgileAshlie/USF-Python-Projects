@@ -1,1 +1,21 @@
+#futval.py
+#Ashlie Stevens
+#COP2030 Assignment#2, Chp.2, Ex.8
 
+#A program to compute the value of an investment
+#carried 10 years into the future
+
+def main():
+	print("This program calculates the future value")
+	print("of a 10-year investment.")
+	perid = eval(input("How often does your bank compute the interest?: "))
+	principal = eval(input("Enter the intitial principal: "))
+	apr = eval(input("Enter the annual interest rate: "))
+	periodic_apr = apr/period
+	for i in range(10*period):
+		principal = principal * (1 + periodic_apr)
+		print ("Principal at end of each quarter= ", principal)
+		print ("The value in 10 years is: ", principal)
+
+		
+main()
