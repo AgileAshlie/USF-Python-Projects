@@ -1,0 +1,28 @@
+# COP2030 Spring 2020 / Chp.4 Ex. 11
+# Ashlie Stevens
+
+# build a house with 5 mouse clicks
+
+from graphics import *
+
+
+def main():
+
+    win = GraphWin()
+
+    # first click is bottom left of house
+    bottomlefthouse = win.getMouse()
+    bottomlefthouse.draw(win)
+
+    # second click is upper right of house
+    toprighthouse = win.getMouse()
+    toprighthouse.draw(win)
+
+    # the basic rectangle of the house
+    houserect = Rectangle(bottomlefthouse, toprighthouse);
+    houserect.setWidth(2)
+    houserect.draw(win);
+
+    # third click is center of the door
+    centertopdoor = win.getMouse()
+    centertopdoor.draw(win)
