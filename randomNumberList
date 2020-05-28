@@ -1,0 +1,81 @@
+#COP2030 Assignment #8
+#Ashlie Stevens
+#Generate a list of 50 random numbers in a range of 1 to 100.
+#Encapsulated code to condensed program, and wrote function that removes duplicate numbers and prints the original
+#and resulting lists. Used two different methods as examples, Dictionary and Loop, timed in Nanoseconds.
+
+import random
+import time
+
+
+# Return the current time in Nanoseconds to track time to run
+def get_time():
+    return time.time_ns()
+
+
+# Generate a list of random numbers of a specific size between 0 and a specific number
+def generate_random_number_list(highest_number, size_of_list):
+    random_list = []
+    for i in range(0, size_of_list):
+        n = random.randint(0, highest_number)
+        random_list.append(n)
+    return random_list
+
+
+# Removes duplicates using a the python dictionary class
+def remove_duplicates_using_dictionary(list_of_numbers):
+    return list(dict.fromkeys(list_of_numbers))
+
+# Removes duplicates using a loop to detect duplicates
+def remove_duplicates_using_loop(list_of_numbers):
+    res = []
+
+    for i in list_of_numbers:
+        if i not in res:
+            res.append(i)
+    return res
+
+
+# Prints the details of a test including the list, the number of duplicates found and the time it took to execute
+def print_list_and_times (list, number_of_dups, time):
+    print('Compacted List')
+    print(list)
+    print('Number of Duplicates Found')
+    print(number_of_dups)
+    print('Time to Compact List in nanoseconds')
+    print(time)
+
+
+def main():
+    # generate a list of random numbers that is between 0 and 100 that is 50 long
+    random_numbers = generate_random_number_list(100, 50)
+
+    # get the compacted list using the dictionary approach and measure the time to execute
+    start_time = get_time()
+    compacted_list_dict = remove_duplicates_using_dictionary(random_numbers)
+    time_to_remove_dups_using_dictionary = get_time() - start_time
+
+    # get the comparcted list using the loop approach and measure the time to execute
+    start_time = get_time()
+    compacted_list_loop = remove_duplicates_using_loop(random_numbers)
+    time_to_remove_dups_using_loop = get_time() - start_time
+
+    # print the original list
+    print('Original List')
+    print(random_numbers)
+    print('')
+
+    # print the results of the dictionary approach
+    print('Dictionary Approach')
+    print_list_and_times (compacted_list_dict, len(random_numbers) - len(compacted_list_dict), time_to_remove_dups_using_dictionary)
+
+    # print a spacer to make it easier to read the output
+    print('')
+    print('')
+
+    # print the loop approach
+    print('Loop Approach')
+    print_list_and_times (compacted_list_loop, len(random_numbers) - len(compacted_list_loop), time_to_remove_dups_using_loop)
+
+
+main()
