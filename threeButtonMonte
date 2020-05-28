@@ -1,0 +1,66 @@
+#COP2030 Ashlie Stevens
+#Write a program to play "Three Button Monte"
+
+from graphics import *
+from GameManager import GameManager
+from Button import Button
+
+
+def main():
+    manager = GameManager()
+
+    win = GraphWin("Rectangle", 500, 500)
+
+    win.setCoords(0, 0, 10, 10)
+
+    won_lost_record = Text(Point(5, 9), "Play Your First Game of 3 Button Monte").draw(win)
+
+    message = Text(Point(5, 8), "Pick A Door").draw(win)
+
+    door1 = Button(win, Point(2, 3), 1.25, .5, "Door 1")
+    door1.activate()
+
+    door2 = Button(win, Point(4, 3), 1.25, .5, "Door 2")
+    door2.activate()
+
+    door3 = Button(win, Point(6, 3), 1.25, .5, "Door 3")
+    door3.activate()
+
+    reset = Button(win, Point(2, 1), 1.25, .5, "Reset Game")
+    reset.activate()
+
+    quit_button = Button(win, Point(4, 1), 1.25, .5, "Quit")
+    quit_button.activate()
+
+    while True:
+        pt = win.getMouse()
+        selected_door = 0
+
+        if quit_button.clicked(pt):
+            win.close()
+
+        if reset.clicked(pt):
+            message.setText("Pick A Door")
+            manager.reset()
+        if door1.clicked(pt):
+            selected_door = 1
+        if door2.clicked(pt):
+            selected_door = 2
+        if door3.clicked(pt):
+            selected_door = 3
+
+
+        if selected_door > 0:
+            won, correct_door = manager.play(selected_door)
+
+            if won:
+                message.setText("You Won!")
+            else:
+                message.setText("You Lost - The Correct Door Was: " + str(correct_door))
+
+        won_lost_record.setText(
+            "Played: " + str(manager.plays) + " Wins: " + str(manager.wins) + " Losses: " + str(manager.losses))
+
+
+
+main()
